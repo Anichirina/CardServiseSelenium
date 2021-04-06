@@ -1,3 +1,4 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,9 +9,13 @@ import static org.openqa.selenium.By.cssSelector;
 public class testCardSelenium {
     private WebDriver driver;
 
+//    @BeforeAll
+//    static void setUpAll() {
+//        System.setProperty("webdriver.chrome.driver", "driver/tmp/chromedriver.exe");
+//    }
     @BeforeAll
-    static void setUpAll() {
-        System.setProperty("webdriver.chrome.driver", "driver/tmp/chromedriver.exe");
+    public static void setupClass() {
+        WebDriverManager.chromedriver().setup();
     }
 
     @BeforeEach
