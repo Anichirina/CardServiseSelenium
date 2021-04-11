@@ -15,20 +15,20 @@ public class testCardSelenium {
 //        System.setProperty("webdriver.chrome.driver", "driver/tmp/chromedriver.exe");
 //    }
     @BeforeAll
-    public static void setupClass() {
+    static void setUpAll() {
         WebDriverManager.chromedriver().setup();
     }
 
     @BeforeEach
-    void setUp() {
-        driver = new ChromeDriver();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized");
-        options.addArguments("disable-infobars");
-        options.addArguments("--headless");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
+    public void setupTest() {
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("start-maximized");
+            options.addArguments("disable-infobars");
+            options.addArguments("--headless");
+            options.addArguments("--disable-extensions");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--no-sandbox");
+            driver = new ChromeDriver(options);
     }
 
     @AfterEach
