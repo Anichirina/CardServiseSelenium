@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.openqa.selenium.By.cssSelector;
 
 public class testCardSelenium {
@@ -48,7 +49,7 @@ public class testCardSelenium {
         driver.findElement(By.className("button")).click();
         String actualMessege = driver.findElement(cssSelector(".paragraph")).getText();
         String expectedMessege = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
-        Assertions.assertEquals(expectedMessege, actualMessege.trim());
+        assertEquals(expectedMessege, actualMessege.trim());
     }
 //английские символы в фамилии
 
@@ -61,7 +62,7 @@ public class testCardSelenium {
         driver.findElement(By.className("button")).click();
         String actualMessege = driver.findElement(cssSelector(".input_type_text > .input__inner > .input__sub")).getText();
         String expectedMessege = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
-        Assertions.assertEquals(expectedMessege, actualMessege.trim());
+        assertEquals(expectedMessege, actualMessege.trim());
 
     }
 
@@ -75,7 +76,7 @@ public class testCardSelenium {
         driver.findElement(By.className("button")).click();
         String actualMessege = driver.findElement(cssSelector(".input_type_tel > .input__inner > .input__sub")).getText();
         String expectedMessege = "Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.";
-        Assertions.assertEquals(expectedMessege, actualMessege.trim());
+        assertEquals(expectedMessege, actualMessege.trim());
 
     }
 
@@ -87,7 +88,7 @@ public class testCardSelenium {
         driver.findElement(By.className("button")).click();
         String actualMessege = driver.findElement(cssSelector(".input_type_text > .input__inner > .input__sub")).getText();
         String expectedMessege = "Поле обязательно для заполнения";
-        Assertions.assertEquals(expectedMessege, actualMessege.trim());
+        assertEquals(expectedMessege, actualMessege.trim());
 
     }
 
@@ -101,6 +102,16 @@ public class testCardSelenium {
         driver.findElement(By.className("button")).click();
         String actualMessege = driver.findElement(cssSelector(".input_type_tel > .input__inner > .input__sub")).getText();
         String expectedMessege = "Поле обязательно для заполнения";
-        Assertions.assertEquals(expectedMessege, actualMessege.trim());
+        assertEquals(expectedMessege, actualMessege.trim());
+    }
+    @Test
+    void shouldCheckboxEmpty() {
+        driver.get("http://localhost:9999");
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Сергей Крылов");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+76666658666");
+        driver.findElement(By.cssSelector(".button")).click();
+        String expected = "Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй";
+        String actual = driver.findElement(By.cssSelector(".input_invalid .checkbox__text")).getText();
+         assertEquals(expected, actual.trim());
     }
 }
