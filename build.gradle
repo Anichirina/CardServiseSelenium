@@ -17,7 +17,6 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     testImplementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
-    testImplementation 'org.seleniumhq.selenium:selenium-chrome-driver:3.141.59'
     testImplementation 'org.slf4j:slf4j-simple:1.7.30'
     testImplementation("io.github.bonigarcia:webdrivermanager:4.4.0")
 }
