@@ -3,6 +3,7 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import static org.openqa.selenium.By.cssSelector;
 
@@ -21,6 +22,13 @@ public class testCardSelenium {
     @BeforeEach
     void setUp() {
         driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("start-maximized");
+        options.addArguments("disable-infobars");
+        options.addArguments("--headless");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
     }
 
     @AfterEach
